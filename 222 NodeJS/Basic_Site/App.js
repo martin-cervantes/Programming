@@ -2,6 +2,8 @@ var http = require('http');
 var url = require('url');
 var fs = require('fs');
 
+var port_num = 8080;
+
 function renderHTML(path, res) {
   fs.readFile(path, function(err, data) {
     if (err) {
@@ -33,4 +35,6 @@ http.createServer(function (req, res) {
       renderHTML('./404.html', res);
       break;
   }
-}).listen(8080);
+}).listen(port_num);
+
+console.log('Listening port ' + port_num);
