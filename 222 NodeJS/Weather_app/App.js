@@ -1,7 +1,13 @@
 require('dotenv').config()
-console.log(process.env.API_KEY)
+const axios = require('axios');
 
-const url = 'https://api.darksky.net/forecast/9d1465c6f3bb7a6c71944bdd8548d026/37.8267,-122.4233'
+const url = `http://api.weatherstack.com/current?access_key=${process.env.API_KEY}&query=New York`
+
+axios.get(url)
+  .then(response => {
+    // handle success
+    console.log(response);
+  })
 
 // console.log('Starting')
 //
