@@ -1,22 +1,10 @@
 require('dotenv').config()
 const axios = require('axios');
 
-const url = `http://api.weatherstack.com/current?access_key=${process.env.API_KEY}&query=New York`
+const url = `http://api.weatherstack.com/current?access_key=${process.env.API_KEY}&query=New York`;
 
 axios.get(url)
   .then(response => {
-    // handle success
-    console.log(response);
-  })
-
-// console.log('Starting')
-//
-// setTimeout(() => {
-//     console.log('Waiting 2 seconds')
-// }, 2000)
-//
-// setTimeout(() => {
-//     console.log('0 seconds')
-// }, 0)
-//
-// console.log('Stopping')
+    const { weather_descriptions, temperature, humidity } = response.data.current;
+    console.log(`${weather_descriptions[0]}. It's currently ${temperature} degrees out. There is ${humidity}% humidity.`);
+  });
